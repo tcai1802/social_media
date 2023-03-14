@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:social_media/constants/index.dart';
 
@@ -33,7 +32,7 @@ class SplashScreen extends StatelessWidget {
                       fontSize: 14.h,
                       fontWeight: FontWeight.w400,
                     ),
-                    colors: [
+                    colors: const [
                       Color(0xFFfeda75),
                       Color(0xFFfa7e1e),
                       Color(0xFFd62976),

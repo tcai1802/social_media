@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
 import 'package:social_media/global_components/index.dart';
+import 'package:social_media/routes/routes.dart';
 import 'package:social_media/views/index.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -114,9 +115,10 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 26.h),
-                  const ButtonWithTextDefault(
+                  ButtonWithTextDefault(
                     text: "Login",
-                    bgColor: Color(0xFFb9BCBF7),
+                    bgColor: const Color(0xFFb9BCBF7),
+                    onTap: () => Navigator.pushNamed(context, Routes.mainRoute),
                   ),
                 ],
               ),
@@ -159,13 +161,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
-                          ));
-                    },
+                    onTap: () =>
+                        Navigator.pushNamed(context, Routes.signUpRoute),
                     child: Text(
                       "Sign up",
                       style: TextStyle(

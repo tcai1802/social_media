@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
 import 'package:social_media/global_components/index.dart';
+import 'package:social_media/routes/routes.dart';
 import 'package:social_media/views/index.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -147,11 +148,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   InkWell(
-                    onTap: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        )),
+                    onTap: () => Navigator.pushNamed(context, Routes.loginRoute),
                     child: Text(
                       "Sign in",
                       style: TextStyle(
