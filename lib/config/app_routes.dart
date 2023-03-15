@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_media/routes/routes.dart';
+import 'package:social_media/config/routes.dart';
 import 'package:social_media/views/index.dart';
 
 class AppRoutes {

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ReelScreen extends StatelessWidget {
-  const ReelScreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+     return Container(
       child: Center(
         child: Text(
-          "reel"
+          "profile"
         ),
       ),
     );

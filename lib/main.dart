@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:social_media/config/providers.dart';
 import 'package:social_media/constants/themes.dart';
-import 'package:social_media/routes/app_routes.dart';
-import 'package:social_media/routes/routes.dart';
+import 'package:social_media/config/app_routes.dart';
+import 'package:social_media/config/routes.dart';
 import 'package:social_media/views/index.dart';
 
 void main() {
@@ -19,13 +21,16 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Social Media App',
-          theme: AppThemes.lightTheme,
-          initialRoute: Routes.loginRoute,
-          onGenerateRoute: AppRoutes.onGenerateRoute,
-          home: child,
+        return MultiProvider(
+          providers: providers,
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Social Media App',
+            theme: AppThemes.lightTheme,
+            initialRoute: Routes.loginRoute,
+            onGenerateRoute: AppRoutes.onGenerateRoute,
+            home: child,
+          ),
         );
       },
     );

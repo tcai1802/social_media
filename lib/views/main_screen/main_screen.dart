@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_media/views/home_screen/home_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:social_media/providers/providers.dart';
 import 'package:social_media/views/main_screen/widgets/widgets.dart';
 
 class MainScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: const [
-          HomeScreen(),
+          MainBodyWidget(),
           Align(
             alignment: Alignment.bottomCenter,
             child: MainBottomNavBarWidget(),

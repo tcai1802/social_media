@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
 import 'package:social_media/global_components/index.dart';
-import 'package:social_media/routes/routes.dart';
+import 'package:social_media/config/routes.dart';
 import 'package:social_media/views/index.dart';
 
 class SignUpScreen extends StatelessWidget {

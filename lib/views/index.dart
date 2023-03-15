@@ -6,4 +6,5 @@ export 'main_screen/main_screen.dart';
 export 'search_screen/search_screen.dart';
 export 'home_screen/home_screen.dart';
 export 'reel_screen/reel_screen.dart';
-export 'profile_screen/home_screen.dart';
+export 'profile_screen/profile_screen.dart';
+export 'add_screen/add_screen.dart';
