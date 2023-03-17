@@ -40,6 +40,9 @@ dependencies:
   simple_gradient_text: ^1.2.4
   provider: ^6.0.5
   cached_network_image: ^3.2.3
+  gradient_borders: ^1.0.0
+  carousel_slider: ^4.2.1
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:

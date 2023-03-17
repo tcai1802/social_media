@@ -6,10 +6,9 @@ class ReelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(color: Colors.black),
       child: Center(
-        child: Text(
-          "reel"
-        ),
+        child: Text("reel"),
       ),
     );
   }

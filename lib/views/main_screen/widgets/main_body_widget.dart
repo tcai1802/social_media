@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/constants/enum.dart';
 import 'package:social_media/providers/providers.dart';
-import 'package:social_media/views/home_screen/home_screen.dart';
 import 'package:social_media/views/index.dart';
 
 class MainBodyWidget extends StatelessWidget {

@@ -18,8 +18,11 @@ class _MainBottomNavBarWidgetState extends State<MainBottomNavBarWidget> {
   Widget build(BuildContext context) {
     return Consumer<MainProvider>(
       builder: (context, value, child) => Container(
-        decoration: const BoxDecoration(
-          border: Border(
+        decoration: BoxDecoration(
+          color: value.currentScreen == BottomNavbarEnum.home
+              ? Colors.white
+              : Colors.black,
+          border: const Border(
             top: BorderSide(color: Color(0xFF262626)),
           ),
         ),
