@@ -5,3 +5,9 @@ enum  BottomNavbarEnum {
   reels,
   profile,
 }
+
+enum MediaType {
+  image, 
+  video,
+  non,
+}

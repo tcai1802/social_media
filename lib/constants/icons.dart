@@ -19,4 +19,5 @@ class AppIcons {
   static const String bookMarkIcon = "assets/icons/book_mark_ic.svg";
   static const String commentIcon = "assets/icons/comment_ic.svg";
   static const String shareIcon = "assets/icons/share_ic.svg";
+  static const String galleryIcon = "assets/icons/gallery_ic.svg";
 }

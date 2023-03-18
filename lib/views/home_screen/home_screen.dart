@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/views/home_screen/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,12 +12,11 @@ class HomeScreen extends StatelessWidget {
           const HomeAppBarWidget(),
           Expanded(
             child: Column(
-              children: [
-                const HomeStoriesWidget(),
-                const Flexible(
+              children: const [
+                HomeStoriesWidget(),
+                Flexible(
                   child: HomePostsWidget(),
                 ),
-                SizedBox(height: 20.h),
               ],
             ),
           )
