@@ -8,11 +8,15 @@ class ButtonWithTextDefault extends StatelessWidget {
     required this.text,
     this.onTap,
     this.bgColor,
+    this.borderColor,
+    this.textStyle,
   });
   final EdgeInsetsGeometry? padding;
   final String text;
   final Function? onTap;
   final Color? bgColor;
+  final Color? borderColor;
+  final TextStyle? textStyle;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -27,15 +31,17 @@ class ButtonWithTextDefault extends StatelessWidget {
         decoration: BoxDecoration(
           color: bgColor ?? const Color(0xFF3797EF),
           borderRadius: BorderRadius.circular(5.r),
+          border: borderColor != null ? Border.all(color: borderColor!) : null,
         ),
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w900,
-          ),
+          style: textStyle ??
+              TextStyle(
+                color: Colors.white,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w900,
+              ),
         ),
       ),
     );

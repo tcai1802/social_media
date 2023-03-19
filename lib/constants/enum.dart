@@ -1,4 +1,4 @@
-enum  BottomNavbarEnum {
+enum BottomNavbarEnum {
   home,
   search,
   add,
@@ -7,7 +7,8 @@ enum  BottomNavbarEnum {
 }
 
 enum MediaType {
-  image, 
+  image,
   video,
+  reels,
   non,
 }

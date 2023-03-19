@@ -20,4 +20,9 @@ class AppIcons {
   static const String commentIcon = "assets/icons/comment_ic.svg";
   static const String shareIcon = "assets/icons/share_ic.svg";
   static const String galleryIcon = "assets/icons/gallery_ic.svg";
+
+  static const String privateIcon = "assets/icons/private_ic.svg";
+  static const String menuIcon = "assets/icons/menu_ic.svg";
+  static const String gridIcon = "assets/icons/grid_ic.svg";
+  static const String tagsIcon = "assets/icons/tags_ic.svg";
 }
