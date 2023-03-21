@@ -13,6 +13,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => SignUpScreen());
       case (Routes.mainRoute):
         return MaterialPageRoute(builder: (_) => MainScreen());
+      case (Routes.addRoute):
+        return MaterialPageRoute(builder: (_) => AddScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

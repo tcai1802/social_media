@@ -6,6 +6,13 @@ enum BottomNavbarEnum {
   profile,
 }
 
+enum AddTypeEnum {
+  post,
+  story,
+  reel,
+  live,
+}
+
 enum MediaType {
   image,
   video,

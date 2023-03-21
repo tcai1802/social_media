@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/config/routes.dart';
 import 'package:social_media/constants/enum.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/providers/providers.dart';
@@ -44,7 +45,7 @@ class _MainBottomNavBarWidgetState extends State<MainBottomNavBarWidget> {
               AppIcons.addIcon,
               AppIcons.addIcon,
               isEnable: value.currentScreen == BottomNavbarEnum.add,
-              onTap: () => value.currentScreen = BottomNavbarEnum.add,
+              onTap: () => Navigator.pushNamed(context, Routes.addRoute),
             ),
             _navBarBottomItem(
               AppIcons.reelOffIcon,
