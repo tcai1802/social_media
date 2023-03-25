@@ -25,4 +25,9 @@ class AppIcons {
   static const String menuIcon = "assets/icons/menu_ic.svg";
   static const String gridIcon = "assets/icons/grid_ic.svg";
   static const String tagsIcon = "assets/icons/tags_ic.svg";
+
+  static const String cameraIcon = "assets/icons/camera_ic.svg";
+  static const String closeIcon = "assets/icons/close_ic.svg";
+  static const String chooseMultipleIcon = "assets/icons/choose_multiple_ic.svg";
+
 }

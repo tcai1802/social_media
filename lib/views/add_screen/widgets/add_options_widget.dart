@@ -26,7 +26,6 @@ class AddOptionsWidget extends StatelessWidget {
             viewportFraction: 0.4,
             reverse: false,
             onPageChanged: (index, reason) {
-              print("Index: $index");
               switch (index) {
                 case 0:
                   value.currentScreen = AddTypeEnum.post;
@@ -51,7 +50,7 @@ class AddOptionsWidget extends StatelessWidget {
                   horizontal: 10.h,
                 ),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(100, 22, 44, 33),
+                  color: Colors.black.withOpacity(0.8),
                   borderRadius: BorderRadius.only(
                     topLeft: element["index"] == 0
                         ? Radius.circular(50)

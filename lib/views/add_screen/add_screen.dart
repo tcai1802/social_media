@@ -12,12 +12,12 @@ class AddScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          AddScreenBodyWidget(),
+          const AddScreenBodyWidget(),
           Positioned(
             bottom: 40.h,
             right: 0,
             left: 0,
-            child: AddOptionsWidget(),
+            child: const AddOptionsWidget(),
           )
         ],
       ),

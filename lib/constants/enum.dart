@@ -19,3 +19,8 @@ enum MediaType {
   reels,
   non,
 }
+
+enum UploadTypeEnum {
+  camera,
+  library,
+}
