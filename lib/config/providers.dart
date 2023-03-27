@@ -8,4 +8,5 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => SearchProvider()),
   ChangeNotifierProvider(create: (_) => ProfileProvider()),
   ChangeNotifierProvider(create: (_) => AddProvider()),
+  ChangeNotifierProvider(create: (_) => AddPostProvider()),
 ];

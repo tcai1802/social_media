@@ -13,7 +13,7 @@ class CircleWithIconDefault extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onTap,
+      onTap: () => onTap(),
       child: Container(
         height: 32.h,
         width: 32.h,
