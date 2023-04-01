@@ -11,14 +11,10 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          const MainBodyWidget(),
-          SizedBox(height: 40.h),
-          const Align(
-            alignment: Alignment.bottomCenter,
-            child: MainBottomNavBarWidget(),
-          )
+      body: Column(
+        children: const [
+          Expanded(child: MainBodyWidget()),
+          MainBottomNavBarWidget(),
         ],
       ),
     );

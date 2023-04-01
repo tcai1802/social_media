@@ -11,13 +11,18 @@ class VideoPreviewWidget extends StatefulWidget {
 
 class _VideoPreviewWidgetState extends State<VideoPreviewWidget> {
   VideoPlayerController? _controller;
-
   @override
-  void initState() {
-    super.initState();
+  void didUpdateWidget(covariant VideoPreviewWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.assetEntity.id != widget.assetEntity.id) {
+      clearData();
+      loadVideo();
+    }
+  }
+
+  loadVideo() async {
     widget.assetEntity.file.then((value) {
       if (value != null) {
-        print("==== ${value.path}");
         _controller = VideoPlayerController.file(
           value,
           videoPlayerOptions: VideoPlayerOptions(mixWithOthers: false),
@@ -28,7 +33,7 @@ class _VideoPreviewWidgetState extends State<VideoPreviewWidget> {
             setState(() {});
           }
         });
-        _controller?.setLooping(true);
+        _controller?.setLooping(false);
         _controller?.initialize().then((value) {
           _controller?.play();
         });
@@ -37,11 +42,22 @@ class _VideoPreviewWidgetState extends State<VideoPreviewWidget> {
   }
 
   @override
-  void dispose() {
-    _controller?.pause();
+  void initState() {
+    super.initState();
+    loadVideo();
+  }
 
-    _controller?.dispose();
+  clearData() {
+    if (_controller!.value.isInitialized) {
+      _controller?.dispose();
+      _controller = null;
+    }
+  }
+
+  @override
+  void dispose() {
     super.dispose();
+    clearData();
   }
 
   @override

@@ -12,9 +12,12 @@ class AddPostAppBarWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 14.h),
       child: Row(
         children: [
-          SvgPicture.asset(
-            AppIcons.closeIcon,
-            height: 18.h,
+          InkWell(
+            onTap: () => Navigator.of(context).pop(),
+            child: SvgPicture.asset(
+              AppIcons.closeIcon,
+              height: 18.h,
+            ),
           ),
           SizedBox(width: 20.w),
           Text(
