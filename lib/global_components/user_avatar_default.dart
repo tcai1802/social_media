@@ -35,16 +35,17 @@ class UserAvatarDefault extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.r),
                   border: newStory!
-                      ? GradientBoxBorder(
+                      ? const GradientBoxBorder(
                           gradient: AppGradientColors.orangeLinearGradient,
                           width: 2,
                         )
-                      : Border.all(width: 2, color: Color(0xFFc7c7c7)),
+                      : Border.all(width: 2, color: const Color(0xFFc7c7c7)),
                 ),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.r),
-                    border: Border.all(width: 1, color: Color(0xFFc7c7c7)),
+                    border:
+                        Border.all(width: 1, color: const Color(0xFFc7c7c7)),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50.r),

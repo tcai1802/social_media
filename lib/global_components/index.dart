@@ -5,3 +5,4 @@ export 'media_item_default.dart';
 export 'circle_with_icon_default.dart';
 
 export 'dialog/dialog_default.dart';
+export 'button/record_button_default.dart';

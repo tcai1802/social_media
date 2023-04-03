@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/index.dart';
 
-class AddPostAppBarWidget extends StatelessWidget {
-  const AddPostAppBarWidget({super.key});
+class GalleryAppBar extends StatelessWidget {
+  const GalleryAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

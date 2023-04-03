@@ -6,16 +6,16 @@ import 'package:photo_manager/photo_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/providers/providers.dart';
 
-class GalleryWidget extends StatefulWidget {
-  const GalleryWidget({
+class GalleryListWidget extends StatefulWidget {
+  const GalleryListWidget({
     super.key,
   });
 
   @override
-  State<GalleryWidget> createState() => _GalleryWidgetState();
+  State<GalleryListWidget> createState() => _GalleryListWidgetState();
 }
 
-class _GalleryWidgetState extends State<GalleryWidget> {
+class _GalleryListWidgetState extends State<GalleryListWidget> {
   @override
   void dispose() {
     super.dispose();

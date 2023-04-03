@@ -12,3 +12,4 @@ export 'add_post/add_post_screen.dart';
 export 'add_story/add_story_screen.dart';
 export 'add_reel/add_reel_screen.dart';
 export 'add_live/add_live_screen.dart';
+export 'camera_screen/camera_screen.dart';

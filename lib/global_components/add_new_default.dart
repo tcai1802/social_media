@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gradient_borders/gradient_borders.dart';
-import 'package:social_media/constants/index.dart';
 
 class AddNewDefault extends StatelessWidget {
   const AddNewDefault({

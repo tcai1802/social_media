@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/providers/providers.dart';
 import 'package:social_media/views/add_post/widgets/widgets.dart';
+import 'package:social_media/views/index.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
@@ -16,7 +16,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      print("Calll");
       await Provider.of<AddPostProvider>(context, listen: false)
           .handleGetImageListInFolder();
     });
@@ -33,13 +32,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
       return Scaffold(
         body: SafeArea(
           child: !value.isLoading
-              ? Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    AddPostAppBarWidget(),
-                    Expanded(child: AddPostBodyWidget()),
-                  ],
-                )
+              ? value.currentScreenBody == AddPostScreenType.camera
+                  ? CameraScreen() // camera screen
+                  : GalleryWidgetBody() // gallery screen
               : const Center(
                   child: CircularProgressIndicator(),
                 ),

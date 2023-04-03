@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,15 @@ import 'package:social_media/config/app_routes.dart';
 import 'package:social_media/config/routes.dart';
 import 'package:social_media/views/index.dart';
 
-void main() {
+late List<CameraDescription> cameraList;
+
+Future<void> main() async {
+  // run some necessary for application
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Ensure that plugin services are initialized
+  cameraList = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
   runApp(const MyApp());
 }
 

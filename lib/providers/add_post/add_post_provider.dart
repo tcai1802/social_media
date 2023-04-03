@@ -1,5 +1,12 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
+
+enum AddPostScreenType {
+  gallery,
+  camera,
+}
 
 class AddPostProvider extends ChangeNotifier {
   bool _isLoading = false;
@@ -42,17 +49,24 @@ class AddPostProvider extends ChangeNotifier {
 
   List<AssetPathEntity> get pathList => _pathList;
 
-  List<int> _mediaIndexList = [];
+  final List<int> _mediaIndexList = [];
   set mediaIndexList(int value) {
     if (getMediaIndexList.contains(value)) {
       _mediaIndexList.remove(value);
     } else {
       _mediaIndexList.add(value);
     }
-    //notifyListeners();
   }
 
   List<int> get getMediaIndexList => _mediaIndexList;
+
+  // current Screen: change screen body
+  AddPostScreenType _currentScreenBody = AddPostScreenType.gallery;
+  set currentScreenBody(AddPostScreenType value) {
+    _currentScreenBody = value;
+    notifyListeners();
+  }
+  AddPostScreenType get currentScreenBody => _currentScreenBody;
 
   // ========================= Function ========================
   Future<void> clearData() async {

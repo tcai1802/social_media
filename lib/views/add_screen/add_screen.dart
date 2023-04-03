@@ -14,7 +14,7 @@ class AddScreen extends StatelessWidget {
         children: [
           const AddScreenBodyWidget(),
           Positioned(
-            bottom: 40.h,
+            bottom: 20.h,
             right: 0,
             left: 0,
             child: const AddOptionsWidget(),
