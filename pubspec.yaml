@@ -48,6 +48,8 @@ dependencies:
   photo_view: ^0.14.0
   video_player: ^2.6.0
   camera: ^0.10.3+2
+  flutter_dotenv: ^5.0.2
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +77,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - .env
     #- images/a_dot_burr.jpeg
     #- images/a_dot_ham.jpeg
 

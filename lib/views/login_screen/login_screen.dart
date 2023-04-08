@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/config/routes.dart';
+import 'package:social_media/providers/login/login_provider.dart';
 import 'package:social_media/views/index.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -11,6 +12,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController userNameController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -55,6 +58,7 @@ class LoginScreen extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
                     child: TextField(
+                      controller: userNameController,
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: const Color(0xFF262626),
@@ -66,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                             horizontal: 0, vertical: 0),
                         hintStyle: TextStyle(
                           fontSize: 14.sp,
-                          color: Color(0xFF979797),
+                          color: const Color(0xFF979797),
                         ),
                         border: InputBorder.none,
                       ),
@@ -75,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 12.h),
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFFFAFAFA),
+                      color: const Color(0xFFFAFAFA),
                       border: Border.all(
                         width: 1,
                         color: Color(0xFFD2E3EE),
@@ -85,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
                     child: TextField(
+                      controller: passwordController,
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: Color(0xFF262626),
@@ -118,7 +123,14 @@ class LoginScreen extends StatelessWidget {
                   ButtonWithTextDefault(
                     text: "Login",
                     bgColor: const Color(0xFFb9BCBF7),
-                    onTap: () => Navigator.pushNamed(context, Routes.mainRoute),
+                    onTap: () {
+                      //print('Data ${userNameController.text.trim()}');
+                      LoginProvider().handleLogin(
+                        context,
+                        userName: userNameController.text.trim(),
+                        password: passwordController.text.trim(),
+                      );
+                    },
                   ),
                 ],
               ),

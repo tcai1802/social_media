@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/config/routes.dart';
+import 'package:social_media/providers/providers.dart';
 import 'package:social_media/views/index.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -11,6 +12,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController userNameController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -55,6 +58,7 @@ class SignUpScreen extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
                     child: TextField(
+                      controller: userNameController,
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: const Color(0xFF262626),
@@ -85,6 +89,7 @@ class SignUpScreen extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 15.w, vertical: 14.h),
                     child: TextField(
+                      controller: passwordController,
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: Color(0xFF262626),
@@ -103,8 +108,15 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 26.h),
-                  const ButtonWithTextDefault(
+                  ButtonWithTextDefault(
                     text: "Sign up",
+                    onTap: () {
+                      LoginProvider().handleSignUp(
+                        context,
+                        userName: userNameController.text.trim(),
+                        password: passwordController.text.trim(),
+                      );
+                    },
                     bgColor: Color(0xFFb9BCBF7),
                   ),
                 ],
@@ -148,7 +160,8 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   InkWell(
-                    onTap: () => Navigator.pushNamed(context, Routes.loginRoute),
+                    onTap: () =>
+                        Navigator.pushNamed(context, Routes.loginRoute),
                     child: Text(
                       "Sign in",
                       style: TextStyle(

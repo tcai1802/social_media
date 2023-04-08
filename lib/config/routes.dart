@@ -4,4 +4,5 @@ abstract class Routes {
   static const String signUpRoute = '/sign_up';
   static const String mainRoute = '/main';
   static const String addRoute = '/add';
+  static const String addPostFormRoute = '/add_post_form';
 }
