@@ -50,6 +50,7 @@ dependencies:
   camera: ^0.10.3+2
   flutter_dotenv: ^5.0.2
   flutter_easyloading: ^3.0.5
+  dio: ^5.1.1
 
 dev_dependencies:
   flutter_test:

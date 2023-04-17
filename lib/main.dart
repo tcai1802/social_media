@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Social Media App',
             theme: AppThemes.lightTheme,
-            initialRoute: Routes.loginRoute,
+            initialRoute: Routes.mainRoute,
             onGenerateRoute: AppRoutes.onGenerateRoute,
             home: child,
             builder: EasyLoading.init(),

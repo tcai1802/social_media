@@ -117,7 +117,7 @@ class SignUpScreen extends StatelessWidget {
                         password: passwordController.text.trim(),
                       );
                     },
-                    bgColor: Color(0xFFb9BCBF7),
+                    bgColor:const Color(0xFF9BCBF7),
                   ),
                 ],
               ),

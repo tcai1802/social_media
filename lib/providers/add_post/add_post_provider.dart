@@ -1,7 +1,10 @@
-// ignore_for_file: unnecessary_getters_setters
+import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:social_media/api/api.dart';
 
 enum AddPostScreenType {
   gallery,
@@ -66,6 +69,7 @@ class AddPostProvider extends ChangeNotifier {
     _currentScreenBody = value;
     notifyListeners();
   }
+
   AddPostScreenType get currentScreenBody => _currentScreenBody;
 
   // ========================= Function ========================
@@ -131,7 +135,6 @@ class AddPostProvider extends ChangeNotifier {
   Future<void> handleSelectPhoto(int index, {bool chooseMulti = false}) async {
     if (index != selectedPhotoIndex || chooseMulti) {
       mediaIndexList = index;
-
       if (getMediaIndexList.contains(index)) {
         //mediaIndexList = index;
         selectedPhotoIndex = index;
@@ -141,4 +144,31 @@ class AddPostProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  // =================  Handle Create, Edit, Delete Post==============
+  Future<void> handleCreatePost() async {
+    EasyLoading.show(status: 'Uploading...');
+    List<File> fileList = [];
+    if (!chooseMultipleImage) {
+      File? file = await currentMediaList[getMediaIndexList[0]].loadFile();
+      if (file != null) fileList.add(file);
+    } else {
+      for (var index in getMediaIndexList) {
+        File? file = await currentMediaList[index].loadFile();
+        if (file != null) {
+          fileList.add(file);
+        }
+      }
+    }
+    Response response = await PostApi().createPostApi(fileList);
+    if (response.data["code"] == "successfully") {
+      EasyLoading.showSuccess('Successfully');
+    } else {
+      EasyLoading.showError('Failed');
+    }
+  }
+
+  Future<void> handleEditPost() async {}
+
+  Future<void> handleDeletePost() async {}
 }

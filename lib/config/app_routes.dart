@@ -15,6 +15,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const MainScreen());
       case (Routes.addRoute):
         return MaterialPageRoute(builder: (_) => const AddScreen());
+      case (Routes.addPostFormRoute):
+        return MaterialPageRoute(builder: (_) => const AddPostFormScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

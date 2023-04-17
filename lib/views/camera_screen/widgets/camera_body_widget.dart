@@ -57,8 +57,7 @@ class _CameraBodyWidgetState extends State<CameraBodyWidget> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  AddPostFormScreen(file: value)));
+                              builder: (context) => AddPostFormScreen()));
                     }
                   })
                 },

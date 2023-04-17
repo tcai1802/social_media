@@ -12,7 +12,7 @@ class UserModel {
   UserModel({
     this.userId,
     this.userName,
-    String? password,
+    this.password,
     this.avatarUrl,
     this.token,
     this.createdAt,
