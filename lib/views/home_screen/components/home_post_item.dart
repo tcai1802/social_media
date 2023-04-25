@@ -6,14 +6,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readmore/readmore.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
+import 'package:social_media/models/post/post_model.dart';
 
 class HomePostItem extends StatefulWidget {
   const HomePostItem({
     super.key,
-    required this.imageList,
+    required this.postModel,
   });
 
-  final List<String> imageList;
+  final PostModel postModel;
 
   @override
   State<HomePostItem> createState() => _HomePostItemState();
@@ -21,6 +22,7 @@ class HomePostItem extends StatefulWidget {
 
 class _HomePostItemState extends State<HomePostItem> {
   int _currentIndexImage = 0;
+  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -71,12 +73,47 @@ class _HomePostItemState extends State<HomePostItem> {
                   if (mounted) setState(() {});
                 },
               ),
-              items: widget.imageList.map((i) {
+              items: widget.postModel.mediaList!.map((i) {
                 return Builder(
                   builder: (BuildContext context) {
-                    return CachedNetworkImage(
-                      imageUrl: i,
-                      fit: BoxFit.cover,
+                    return GestureDetector(
+                      onDoubleTap: () {
+                        print("Double Tap");
+                        if (isFavorite) return;
+                        setState(() {
+                          isFavorite = true;
+                          Future.delayed(
+                            Duration(seconds: 1),
+                            () {
+                              setState(() {
+                                isFavorite = false;
+                              });
+                            },
+                          );
+                        });
+                      },
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl: i,
+                            fit: BoxFit.cover,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: AnimatedScale(
+                              scale: isFavorite ? 1 : 0,
+                              curve: Curves.easeInOut,
+                              duration: Duration(milliseconds: 400),
+                              child: Icon(
+                                Icons.favorite,
+                                color: Colors.white.withOpacity(0.8),
+                                size: 100.h,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     );
                   },
                 );
@@ -92,7 +129,7 @@ class _HomePostItemState extends State<HomePostItem> {
                   borderRadius: BorderRadius.circular(13.r),
                 ),
                 child: Text(
-                  "${_currentIndexImage + 1}/${widget.imageList.length}",
+                  "${_currentIndexImage + 1}/${widget.postModel.mediaList!.length}",
                   style: TextStyle(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
@@ -131,8 +168,8 @@ class _HomePostItemState extends State<HomePostItem> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ...widget.imageList.map((e) {
-                      int index = widget.imageList.indexOf(e);
+                    ...widget.postModel.mediaList!.map((e) {
+                      int index = widget.postModel.mediaList!.indexOf(e);
                       return Container(
                         height: 6.h,
                         width: 6.h,
@@ -153,18 +190,19 @@ class _HomePostItemState extends State<HomePostItem> {
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 14.h),
+          width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "2 likes",
+                "${widget.postModel.total_likes} likes",
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               ReadMoreText(
-                "The game in Japan was amazing and I want to share some photos",
+                widget.postModel.caption!,
                 trimLines: 1,
                 trimMode: TrimMode.Line,
                 trimCollapsedText: ' Show more',

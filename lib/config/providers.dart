@@ -10,4 +10,5 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => AddProvider()),
   ChangeNotifierProvider(create: (_) => AddPostProvider()),
   ChangeNotifierProvider(create: (_) => CameraProvider()),
+  ChangeNotifierProvider(create: (_) => PostProvider()),
 ];
