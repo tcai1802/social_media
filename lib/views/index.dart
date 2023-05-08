@@ -14,3 +14,4 @@ export 'add_reel/add_reel_screen.dart';
 export 'add_live/add_live_screen.dart';
 export 'camera_screen/camera_screen.dart';
 export 'add_post_form/add_post_form_screen.dart';
+export 'comment/comment_screen.dart';

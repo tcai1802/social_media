@@ -35,7 +35,7 @@ class AddPostFormAppBar extends StatelessWidget {
             ),
             const Spacer(),
             InkWell(
-              onTap: () => value.handleCreatePost(),
+              onTap: () => value.handleCreatePost(context),
               child: Icon(
                 Icons.done,
                 size: 20.h,

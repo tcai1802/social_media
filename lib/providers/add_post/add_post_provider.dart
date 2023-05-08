@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:social_media/api/api.dart';
+import 'package:social_media/models/post/post_model.dart';
 
 enum AddPostScreenType {
   gallery,
@@ -31,6 +32,10 @@ class AddPostProvider extends ChangeNotifier {
   String _currentAsset = "";
   set currentAsset(String value) => _currentAsset = value;
   String get currentAsset => _currentAsset;
+
+  String _caption = "";
+  set caption(String value) => _caption = value;
+  String get caption => _caption;
 
   // other function
   int _selectedPhotoIndex = 0;
@@ -146,9 +151,10 @@ class AddPostProvider extends ChangeNotifier {
   }
 
   // =================  Handle Create, Edit, Delete Post==============
-  Future<void> handleCreatePost() async {
+  Future<void> handleCreatePost(context) async {
     EasyLoading.show(status: 'Uploading...');
     List<File> fileList = [];
+    List<MultipartFile> inputMediaList = [];
     if (!chooseMultipleImage) {
       File? file = await currentMediaList[getMediaIndexList[0]].loadFile();
       if (file != null) fileList.add(file);
@@ -160,12 +166,25 @@ class AddPostProvider extends ChangeNotifier {
         }
       }
     }
-    Response response = await PostApi().createPostApi(fileList);
+
+    for (File data in fileList) {
+      MultipartFile imageData = MultipartFile.fromFileSync(
+        data.path,
+      );
+      inputMediaList.add(imageData);
+    }
+    print("====${inputMediaList}");
+    Map<String, dynamic> input =
+        PostModel(caption: caption, mediaList: inputMediaList).toJson();
+
+    print("====${input}");
+    Response response = await PostApi().createPostApi(input);
     if (response.data["code"] == "successfully") {
       EasyLoading.showSuccess('Successfully');
     } else {
       EasyLoading.showError('Failed');
     }
+    EasyLoading.dismiss();
   }
 
   Future<void> handleEditPost() async {}

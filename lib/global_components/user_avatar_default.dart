@@ -11,13 +11,15 @@ class UserAvatarDefault extends StatelessWidget {
     this.text,
     this.imageUrl,
     this.size = 62,
-    this.newStory = false,
+    this.isViewedAll = false,
+    this.enableBorder = false,
   });
   final bool? isAdd;
   final String? text;
   final String? imageUrl;
   final double size;
-  final bool? newStory;
+  final bool? isViewedAll;
+  final bool enableBorder;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -34,12 +36,14 @@ class UserAvatarDefault extends StatelessWidget {
                 padding: EdgeInsets.all(2.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.r),
-                  border: newStory!
-                      ? const GradientBoxBorder(
-                          gradient: AppGradientColors.orangeLinearGradient,
-                          width: 2,
-                        )
-                      : Border.all(width: 2, color: const Color(0xFFc7c7c7)),
+                  border: enableBorder
+                      ? isViewedAll!
+                          ? const GradientBoxBorder(
+                              gradient: AppGradientColors.orangeLinearGradient,
+                              width: 2,
+                            )
+                          : Border.all(width: 2, color: const Color(0xFFc7c7c7))
+                      : null,
                 ),
                 child: Container(
                   decoration: BoxDecoration(

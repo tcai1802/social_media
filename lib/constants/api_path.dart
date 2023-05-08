@@ -5,4 +5,6 @@ class ApiPath {
   static const editPost = "/posts/:id";
   static const delPost = "/posts/:id";
   static const allPosts = "/posts/all_posts";
+  static const favorites = "/favorites";
+  static const comments = "/comments";
 }

@@ -3,11 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/providers/providers.dart';
 
-class AddPostFormBody extends StatelessWidget {
+class AddPostFormBody extends StatefulWidget {
   const AddPostFormBody({super.key});
 
   @override
+  State<AddPostFormBody> createState() => _AddPostFormBodyState();
+}
+
+class _AddPostFormBodyState extends State<AddPostFormBody> {
+  @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
+    final provider = Provider.of<AddPostProvider>(context, listen: false);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,10 +44,14 @@ class AddPostFormBody extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: controller,
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: const Color(0xFF262626),
                   ),
+                  onChanged: (value) {
+                    provider.caption = value;
+                  },
                   decoration: InputDecoration(
                     hintText: "Enter your caption...",
                     isDense: true,

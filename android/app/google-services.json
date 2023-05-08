@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "916831591136",
+    "project_id": "social-media-fb35b",
+    "storage_bucket": "social-media-fb35b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916831591136:android:d00d090475a1c4e24b8e85",
+        "android_client_info": {
+          "package_name": "com.example.social_media"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916831591136-2rntbqg65fg59riu852pqolqvsak99i7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFe6Yj4Fr7WR0gfsBV3qOmvhscbhZCpz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916831591136-2rntbqg65fg59riu852pqolqvsak99i7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,10 @@
 import 'package:camera/camera.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/config/firebase_options.dart';
 import 'package:social_media/config/providers.dart';
 import 'package:social_media/constants/themes.dart';
 import 'package:social_media/config/app_routes.dart';
@@ -17,6 +19,9 @@ Future<void> main() async {
 
   WidgetsFlutterBinding
       .ensureInitialized(); // Ensure that plugin services are initialized
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // init Firebase
+  //await Firebase.
   // Load file env
   await dotenv.load(fileName: ".env");
   cameraList = await availableCameras();
