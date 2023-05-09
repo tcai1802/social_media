@@ -4,8 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media/api/api.dart';
 import 'package:social_media/models/post/post_model.dart';
+import 'package:social_media/providers/login/login_provider.dart';
 
 enum AddPostScreenType {
   gallery,
@@ -152,6 +154,8 @@ class AddPostProvider extends ChangeNotifier {
 
   // =================  Handle Create, Edit, Delete Post==============
   Future<void> handleCreatePost(context) async {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+
     EasyLoading.show(status: 'Uploading...');
     List<File> fileList = [];
     List<MultipartFile> inputMediaList = [];
@@ -178,7 +182,10 @@ class AddPostProvider extends ChangeNotifier {
         PostModel(caption: caption, mediaList: inputMediaList).toJson();
 
     print("====${input}");
-    Response response = await PostApi().createPostApi(input);
+    Response response = await PostApi().createPostApi(
+      input,
+      {"Authorization": loginProvider.currentUser?.token},
+    );
     if (response.data["code"] == "successfully") {
       EasyLoading.showSuccess('Successfully');
     } else {

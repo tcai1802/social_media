@@ -14,6 +14,8 @@ class AddCommentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CommentProvider>(context, listen: false);
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+    TextEditingController contentController = TextEditingController();
     return Align(
         alignment: Alignment.bottomCenter,
         child: Container(
@@ -26,6 +28,7 @@ class AddCommentWidget extends StatelessWidget {
               SizedBox(width: 10.w),
               Expanded(
                 child: TextField(
+                  controller: contentController,
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: const Color(0xFF262626),
@@ -49,8 +52,8 @@ class AddCommentWidget extends StatelessWidget {
                   provider.handleAddComment(
                       targetId: postId,
                       inputData: CommentModel(
-                        content: "test",
-                        user_id: "6448e31002d68b2317b675e7",
+                        content: contentController.text.trim(),
+                        user_id: loginProvider.currentUser?.userId ?? "",
                         target_id: postId,
                       ).toJson());
                 },

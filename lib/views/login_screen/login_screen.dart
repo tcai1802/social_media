@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 26.h),
                   ButtonWithTextDefault(
                     text: "Login",
-                    bgColor: const Color(0xFFb9BCBF7),
+                    bgColor: Colors.blue,
                     onTap: () {
                       //print('Data ${userNameController.text.trim()}');
                       LoginProvider().handleLogin(

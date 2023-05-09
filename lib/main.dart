@@ -3,12 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/config/firebase_options.dart';
 import 'package:social_media/config/providers.dart';
 import 'package:social_media/constants/themes.dart';
 import 'package:social_media/config/app_routes.dart';
 import 'package:social_media/config/routes.dart';
+import 'package:social_media/models/user/user_hive.dart';
 import 'package:social_media/views/index.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -20,6 +22,8 @@ Future<void> main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // Ensure that plugin services are initialized
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Hive.initFlutter();
+  Hive.registerAdapter(UserHiveAdapter());
   // init Firebase
   //await Firebase.
   // Load file env
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Social Media App',
             theme: AppThemes.lightTheme,
-            initialRoute: Routes.mainRoute,
+            initialRoute: Routes.loginRoute,
             onGenerateRoute: AppRoutes.onGenerateRoute,
             home: child,
             builder: EasyLoading.init(),

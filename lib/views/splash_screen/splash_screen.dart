@@ -1,10 +1,35 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:social_media/config/routes.dart';
 import 'package:social_media/constants/index.dart';
+import 'package:social_media/models/user/user_hive.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(
+      const Duration(seconds: 1),
+      () async {
+        if (FirebaseAuth.instance.currentUser != null) {
+          Navigator.pushNamed(context, Routes.mainRoute);
+        } else {
+          Navigator.pushNamed(context, Routes.loginRoute);
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

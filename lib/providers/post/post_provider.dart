@@ -6,16 +6,16 @@ import 'package:social_media/models/post/post_model.dart';
 
 class PostProvider extends ChangeNotifier {
   List<PostModel> postModelList = <PostModel>[];
-
+  bool isLoading = false;
   Future<void> handleLikeOrNotPost({required String postId}) async {
     Response? res = await PostApi().favoritePostApi({
       "user_id": "6448e36202d68b2317b675eb",
       "target_id": "644aa389236ad19fb8a222b2"
     }, postId);
     if (res != null && res.data["code"] == "successfully") {
-      print("Result: ${res?.data}");
+      //print("Result: ${res?.data}");
     } else {
-      print("Result: ${res?.data}");
+      //print("Result: ${res?.data}");
     }
   }
 
@@ -23,7 +23,7 @@ class PostProvider extends ChangeNotifier {
       {required String postId}) async {
     Response? res = await PostApi().showFavoritePostApi(postId);
     if (res != null && res.data["code"] == "successfully") {
-      print("Result: ${res?.data}");
+      //print("Result: ${res?.data}");
       List<FavoriteModel> favoriteList = [];
       for (var item in res.data["data"]) {
         favoriteList.add(FavoriteModel.fromJson(item));
@@ -36,6 +36,8 @@ class PostProvider extends ChangeNotifier {
   }
 
   Future<void> handleShowAllPost() async {
+    isLoading = true;
+    notifyListeners();
     Response? res = await PostApi().showAllPostApi();
     if (res != null && res.data["code"] == "successfully") {
       //postModelList.clear();
@@ -43,6 +45,7 @@ class PostProvider extends ChangeNotifier {
         postModelList.add(PostModel.fromJson(data));
       }
     }
+    isLoading = false;
     notifyListeners();
   }
 }

@@ -35,15 +35,19 @@ class _HomePostsWidgetState extends State<HomePostsWidget> {
     ];
     return Consumer<PostProvider>(builder: (context, value, child) {
       //print("=== ${value.postModelList}");
-      return ListView.builder(
-        itemCount: value.postModelList.length,
-        padding: EdgeInsets.zero,
-        itemBuilder: (context, index) {
-          return HomePostItem(
-            postModel: value.postModelList[index],
-          );
-        },
-      );
+      return !value.isLoading
+          ? ListView.builder(
+              itemCount: value.postModelList.length,
+              padding: EdgeInsets.zero,
+              itemBuilder: (context, index) {
+                return HomePostItem(
+                  postModel: value.postModelList[index],
+                );
+              },
+            )
+          : Center(
+              child: Text("Loading..."),
+            );
     });
   }
 }

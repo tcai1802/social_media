@@ -4,6 +4,7 @@ import 'package:social_media/providers/add/add_provider.dart';
 import 'package:social_media/providers/providers.dart';
 
 List<SingleChildWidget> providers = [
+  ChangeNotifierProvider(create: (_) => LoginProvider()),
   ChangeNotifierProvider(create: (_) => MainProvider()),
   ChangeNotifierProvider(create: (_) => SearchProvider()),
   ChangeNotifierProvider(create: (_) => ProfileProvider()),
