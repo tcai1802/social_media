@@ -1,13 +1,9 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:social_media/constants/index.dart';
-import 'package:social_media/models/post/post_model.dart';
 import 'package:social_media/models/user/user_hive.dart';
-import 'package:social_media/providers/login/login_provider.dart';
 
 class PostApi {
   Future<Response> createPostApi(
@@ -19,7 +15,7 @@ class PostApi {
     //  );
     //  fileList.add(imageData);
     //}
-    print("===== $data");
+    //print("===== $data");
     final formData = FormData.fromMap(data);
     final dio = Dio();
     var addPostUri = Uri.https(dotenv.env["URL_MAIN"]!, ApiPath.addPost);
