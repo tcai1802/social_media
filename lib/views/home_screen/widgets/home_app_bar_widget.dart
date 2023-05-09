@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:social_media/constants/colors.dart';
 import 'package:social_media/constants/index.dart';
 
 class HomeAppBarWidget extends StatelessWidget {
@@ -34,7 +35,7 @@ class HomeAppBarWidget extends StatelessWidget {
             ),
           ),
           const Divider(
-            color: Color(0xFF979797),
+            color: AppColors.dustyGrayColor,
             height: 1,
           ),
         ],

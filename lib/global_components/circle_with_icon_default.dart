@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:social_media/constants/colors.dart';
 
 class CircleWithIconDefault extends StatelessWidget {
   const CircleWithIconDefault({
@@ -19,7 +20,7 @@ class CircleWithIconDefault extends StatelessWidget {
         width: 32.h,
         padding: EdgeInsets.all(8.h),
         decoration: BoxDecoration(
-          color: const Color(0xFF262626).withOpacity(0.8),
+          color:  AppColors.mineShaftColor.withOpacity(0.8),
           borderRadius: BorderRadius.circular(50.r),
         ),
         child: SvgPicture.asset(iconUrl),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/constants/colors.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/models/comment/comment_model.dart';
@@ -32,7 +33,7 @@ class AddCommentWidget extends StatelessWidget {
                   controller: contentController,
                   style: TextStyle(
                     fontSize: 14.sp,
-                    color: const Color(0xFF262626),
+                    color: AppColors.mineShaftColor,
                   ),
                   decoration: InputDecoration(
                     hintText: AppStrings.addCommentHint,
@@ -41,7 +42,7 @@ class AddCommentWidget extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     hintStyle: TextStyle(
                       fontSize: 14.sp,
-                      color: const Color(0xFF979797),
+                      color: AppColors.dustyGrayColor,
                     ),
                     border: InputBorder.none,
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_media/constants/colors.dart';
 
 class ButtonWithTextDefault extends StatelessWidget {
   const ButtonWithTextDefault({
@@ -29,7 +30,7 @@ class ButtonWithTextDefault extends StatelessWidget {
               horizontal: 22.w,
             ),
         decoration: BoxDecoration(
-          color: bgColor ?? const Color(0xFF3797EF),
+          color: bgColor ?? AppColors.pictonBlueColor,
           borderRadius: BorderRadius.circular(5.r),
           border: borderColor != null ? Border.all(color: borderColor!) : null,
         ),

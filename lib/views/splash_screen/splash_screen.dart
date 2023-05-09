@@ -17,7 +17,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.delayed(
       const Duration(seconds: 1),
@@ -57,11 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       fontSize: 14.h,
                       fontWeight: FontWeight.w400,
                     ),
-                    colors: const [
-                      Color(0xFFfeda75),
-                      Color(0xFFfa7e1e),
-                      Color(0xFFd62976),
-                    ],
+                    colors: AppGradientColors.orangeLinearGradient.colors
                   ),
                   Image.asset(
                     AppIcons.logoMetaIcon,

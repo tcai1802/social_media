@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/constants/colors.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/providers/providers.dart';
 
@@ -48,7 +49,7 @@ class _AddPostFormBodyState extends State<AddPostFormBody> {
                   controller: controller,
                   style: TextStyle(
                     fontSize: 14.sp,
-                    color: const Color(0xFF262626),
+                    color: AppColors.mineShaftColor,
                   ),
                   onChanged: (value) {
                     provider.caption = value;
@@ -60,7 +61,7 @@ class _AddPostFormBodyState extends State<AddPostFormBody> {
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     hintStyle: TextStyle(
                       fontSize: 14.sp,
-                      color: const Color(0xFF979797),
+                      color: AppColors.dustyGrayColor,
                     ),
                     border: InputBorder.none,
                   ),

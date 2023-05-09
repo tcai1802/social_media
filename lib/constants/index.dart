@@ -5,3 +5,4 @@ export 'gradient_colors.dart';
 export 'themes.dart';
 export 'enum.dart';
 export 'api_path.dart';
+export 'colors.dart';

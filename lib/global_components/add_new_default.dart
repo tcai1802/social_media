@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_media/constants/colors.dart';
 
 class AddNewDefault extends StatelessWidget {
   const AddNewDefault({
@@ -25,7 +26,7 @@ class AddNewDefault extends StatelessWidget {
             padding: EdgeInsets.all(2.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50.r),
-              border: Border.all(width: 2, color: const Color(0xFFc7c7c7)),
+              border: Border.all(width: 2, color: AppColors.sliverColor),
             ),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(50.r),

@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFAFAFA),
+                      color: AppColors.alabasterColor,
                       border: Border.all(
                         width: 1,
                         color: const Color(0xFFD2E3EE),
@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                             horizontal: 0, vertical: 0),
                         hintStyle: TextStyle(
                           fontSize: 14.sp,
-                          color: const Color(0xFF979797),
+                          color: AppColors.dustyGrayColor,
                         ),
                         border: InputBorder.none,
                       ),
@@ -80,10 +80,10 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 12.h),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFAFAFA),
+                      color: AppColors.alabasterColor,
                       border: Border.all(
                         width: 1,
-                        color: Color(0xFFD2E3EE),
+                        color: AppColors.jaggedIceColor,
                       ),
                       borderRadius: BorderRadius.circular(5.r),
                     ),
@@ -93,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                       controller: passwordController,
                       style: TextStyle(
                         fontSize: 14.sp,
-                        color: Color(0xFF262626),
+                        color: AppColors.mineShaftColor,
                       ),
                       decoration: InputDecoration(
                         hintText: "password",
@@ -102,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                             horizontal: 0, vertical: 0),
                         hintStyle: TextStyle(
                           fontSize: 14.sp,
-                          color: Color(0xFF979797),
+                          color: AppColors.dustyGrayColor,
                         ),
                         border: InputBorder.none,
                       ),
@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      "Forgot password?",
+                      AppStrings.forgotPassword,
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -123,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 26.h),
                   ButtonWithTextDefault(
                     text: AppStrings.login,
-                    bgColor: Colors.blue,
+                    bgColor: AppColors.magnoliaColor,
                     onTap: () {
                       //print('Data ${userNameController.text.trim()}');
                       LoginProvider().handleLogin(
@@ -153,10 +153,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const Divider(
-              color: Color(0xFF979797),
-              height: 1,
-            ),
+            const Divider(color: AppColors.dustyGrayColor, height: 1),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 18.h),
               child: Row(
@@ -167,9 +164,7 @@ class LoginScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      color: const Color(
-                        0xFF979797,
-                      ),
+                      color: AppColors.dustyGrayColor
                     ),
                   ),
                   SizedBox(width: 4.w),
@@ -181,7 +176,7 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: const Color(0xFF3797EF),
+                        color: AppColors.pictonBlueColor,
                       ),
                     ),
                   )

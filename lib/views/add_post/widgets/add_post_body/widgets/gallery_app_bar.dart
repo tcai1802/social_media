@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/config/routes.dart';
+import 'package:social_media/constants/colors.dart';
 import 'package:social_media/constants/index.dart';
 
 class GalleryAppBar extends StatelessWidget {
@@ -37,7 +38,7 @@ class GalleryAppBar extends StatelessWidget {
               AppStrings.next,
               style: TextStyle(
                 fontSize: 16.sp,
-                color: const Color(0xFF3897F0),
+                color: AppColors.pictonBlueColor,
                 fontWeight: FontWeight.w700,
               ),
             ),

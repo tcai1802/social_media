@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+import 'package:social_media/constants/colors.dart';
 import 'package:social_media/constants/index.dart';
 
 class UserAvatarDefault extends StatelessWidget {
@@ -42,14 +43,14 @@ class UserAvatarDefault extends StatelessWidget {
                               gradient: AppGradientColors.orangeLinearGradient,
                               width: 2,
                             )
-                          : Border.all(width: 2, color: const Color(0xFFc7c7c7))
+                          : Border.all(width: 2, color: AppColors.sliverColor)
                       : null,
                 ),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.r),
                     border:
-                        Border.all(width: 1, color: const Color(0xFFc7c7c7)),
+                        Border.all(width: 1, color: AppColors.sliverColor),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50.r),

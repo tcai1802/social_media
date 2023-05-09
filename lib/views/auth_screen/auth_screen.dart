@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:social_media/constants/colors.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/views/index.dart';
@@ -38,7 +39,7 @@ class AuthScreen extends StatelessWidget {
             ),
             const Spacer(),
             const Divider(
-              color: Color(0xFF979797),
+              color: AppColors.dustyGrayColor,
               height: 1,
             ),
             Padding(
@@ -51,9 +52,7 @@ class AuthScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      color: const Color(
-                        0xFF979797,
-                      ),
+                      color: AppColors.dustyGrayColor,
                     ),
                   ),
                   SizedBox(width: 4.w),
@@ -62,7 +61,7 @@ class AuthScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w900,
-                      color: const Color(0xFF262626),
+                      color: AppColors.mineShaftColor,
                     ),
                   )
                 ],

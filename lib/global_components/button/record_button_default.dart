@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_media/constants/index.dart';
 
 class RecordButtonDefault extends StatefulWidget {
   const RecordButtonDefault({
@@ -89,11 +90,7 @@ class _RecordButtonDefaultState extends State<RecordButtonDefault>
               child: CustomPaint(
                 painter: GradientArcPainter(
                   progress: animation!.value,
-                  colorList: const [
-                    Color(0xFFFBAA47),
-                    Color(0xFFD91A46),
-                    Color(0xFFA60F93),
-                  ],
+                  colorList: AppGradientColors.orangeLinearGradient.colors,
                   width: 4.h,
                 ),
               ),

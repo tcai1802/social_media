@@ -24,8 +24,6 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   Hive.registerAdapter(UserHiveAdapter());
-  // init Firebase
-  //await Firebase.
   // Load file env
   await dotenv.load(fileName: ".env");
   cameraList = await availableCameras();
