@@ -22,7 +22,7 @@ class GalleryAppBar extends StatelessWidget {
           ),
           SizedBox(width: 20.w),
           Text(
-            "New Post",
+            AppStrings.newPost,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w700,
@@ -34,7 +34,7 @@ class GalleryAppBar extends StatelessWidget {
               Navigator.pushNamed(context, Routes.addPostFormRoute);
             },
             child: Text(
-              "Next",
+              AppStrings.next,
               style: TextStyle(
                 fontSize: 16.sp,
                 color: const Color(0xFF3897F0),

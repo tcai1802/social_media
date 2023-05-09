@@ -112,7 +112,7 @@ class _HomePostItemState extends State<HomePostItem> {
                       return GestureDetector(
                         onDoubleTap: () {
                           if (isFavorite) return;
-                          print("Double Tap");
+                          //print("Double Tap");
 
                           myType.handleLikeOrNotPost(
                               postId: widget.postModel.post_id ?? "");
@@ -248,8 +248,8 @@ class _HomePostItemState extends State<HomePostItem> {
                   widget.postModel.caption!,
                   trimLines: 1,
                   trimMode: TrimMode.Line,
-                  trimCollapsedText: ' Show more',
-                  trimExpandedText: ' Show less',
+                  trimCollapsedText: AppStrings.showMore,
+                  trimExpandedText: AppStrings.showLess,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w400,

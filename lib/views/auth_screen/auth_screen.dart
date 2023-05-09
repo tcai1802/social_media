@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:social_media/constants/icons.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/views/index.dart';
 
@@ -25,13 +25,14 @@ class AuthScreen extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 34.w),
               child: ButtonWithTextDefault(
-                text: "Login",
+                text: AppStrings.login,
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
+                  );
                 },
               ),
             ),
@@ -46,7 +47,7 @@ class AuthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don’t have an account?",
+                    AppStrings.notHaveAccount,
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
@@ -57,7 +58,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   Text(
-                    "Sign up",
+                    AppStrings.signUp,
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w900,

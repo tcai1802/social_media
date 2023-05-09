@@ -10,7 +10,7 @@ class AddOptionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> adddList = [
+    List<Map<String, dynamic>> addList = [
       {"index": 0, "content": "Post"},
       {"index": 1, "content": "Story"},
       {"index": 2, "content": "Reels"},
@@ -42,7 +42,7 @@ class AddOptionsWidget extends StatelessWidget {
               }
             },
           ),
-          items: adddList.map((element) {
+          items: addList.map((element) {
             return Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(
@@ -53,16 +53,16 @@ class AddOptionsWidget extends StatelessWidget {
                   color: Colors.black.withOpacity(0.8),
                   borderRadius: BorderRadius.only(
                     topLeft: element["index"] == 0
-                        ? Radius.circular(50)
+                        ? const Radius.circular(50)
                         : Radius.zero,
                     bottomLeft: element["index"] == 0
-                        ? Radius.circular(50)
+                        ? const Radius.circular(50)
                         : Radius.zero,
-                    topRight: element["index"] == adddList.length - 1
-                        ? Radius.circular(50)
+                    topRight: element["index"] == addList.length - 1
+                        ? const Radius.circular(50)
                         : Radius.zero,
-                    bottomRight: element["index"] == adddList.length - 1
-                        ? Radius.circular(50)
+                    bottomRight: element["index"] == addList.length - 1
+                        ? const Radius.circular(50)
                         : Radius.zero,
                   ),
                 ),

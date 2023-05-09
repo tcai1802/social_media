@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/providers/providers.dart';
 
 class AddPostFormBody extends StatefulWidget {
@@ -53,7 +54,7 @@ class _AddPostFormBodyState extends State<AddPostFormBody> {
                     provider.caption = value;
                   },
                   decoration: InputDecoration(
-                    hintText: "Enter your caption...",
+                    hintText: AppStrings.captionHint,
                     isDense: true,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),

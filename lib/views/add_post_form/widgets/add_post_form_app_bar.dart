@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:social_media/config/routes.dart';
-import 'package:social_media/providers/add/add_provider.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/providers/providers.dart';
 
 class AddPostFormAppBar extends StatelessWidget {
@@ -27,7 +23,7 @@ class AddPostFormAppBar extends StatelessWidget {
                 )),
             SizedBox(width: 20.w),
             Text(
-              "New Post",
+              AppStrings.newPost,
               style: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w700,

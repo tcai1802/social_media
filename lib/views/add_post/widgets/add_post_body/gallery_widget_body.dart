@@ -60,7 +60,7 @@ class _GalleryWidgetBodyState extends State<GalleryWidgetBody> {
                                   assetEntity: value.currentMediaList[
                                       value.selectedPhotoIndex],
                                 )
-                          : const Center(child: Text('Loading...')),
+                          : const Center(child: Text(AppStrings.loading)),
                     ),
                   ),
                 ];

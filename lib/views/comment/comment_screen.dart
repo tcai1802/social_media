@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/arguments/arguments.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/providers/providers.dart';
 import 'package:social_media/views/comment/widgets/widgets.dart';
@@ -17,7 +18,7 @@ class _CommentScreenState extends State<CommentScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    print("Data: ${widget.data}");
+    //print("Data: ${widget.data}");
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       Provider.of<CommentProvider>(context, listen: false)
@@ -41,7 +42,7 @@ class _CommentScreenState extends State<CommentScreen> {
             ),
           ),
           title: Text(
-            "Comments",
+            AppStrings.comments,
             style: TextStyle(
               color: Colors.black,
               fontSize: 18.sp,

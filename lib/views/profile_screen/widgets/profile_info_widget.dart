@@ -42,7 +42,7 @@ class ProfileInfoWidget extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           ButtonWithTextDefault(
-            text: "Edit Profile",
+            text: AppStrings.editProfile,
             bgColor: Colors.white,
             textStyle: TextStyle(
               color: Colors.black,

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/models/models.dart';
 import 'package:social_media/providers/providers.dart';
 import 'package:social_media/views/comment/components/components.dart';
@@ -20,11 +21,11 @@ class CommentBodyWidget extends StatelessWidget {
           stream: snapshots,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Center(child: Text('Something went wrong'));
+              return const Center(child: Text(AppStrings.wrongSomething));
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: Text("Loading"));
+              return const Center(child: Text(AppStrings.loading));
             }
 
             return ListView.builder(

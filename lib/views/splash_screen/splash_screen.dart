@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GradientText(
-                    'From',
+                    AppStrings.from,
                     style: TextStyle(
                       fontSize: 14.h,
                       fontWeight: FontWeight.w400,

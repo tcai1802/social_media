@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/providers/providers.dart';
 import 'package:social_media/views/index.dart';
@@ -42,7 +43,7 @@ class _CameraBodyWidgetState extends State<CameraBodyWidget> {
                     value.controller!,
                   )
                 : const Center(
-                    child: Text("Loading..."),
+                    child: Text(AppStrings.loading),
                   ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -50,14 +51,13 @@ class _CameraBodyWidgetState extends State<CameraBodyWidget> {
                 second: 10,
                 onTap: () => {
                   value.handleCapturePicture(context).then((value) {
-                    print(
-                      "Value ${value}",
-                    );
                     if (value != null) {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddPostFormScreen()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddPostFormScreen(),
+                        ),
+                      );
                     }
                   })
                 },

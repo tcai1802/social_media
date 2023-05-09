@@ -13,7 +13,7 @@ class AddScreenBodyWidget extends StatelessWidget {
       builder: (context, value, child) {
         switch (value.currentScreen) {
           case AddTypeEnum.post:
-            return AddPostScreen();
+            return const AddPostScreen();
           case AddTypeEnum.story:
             return const AddStoryScreen();
           case AddTypeEnum.reel:

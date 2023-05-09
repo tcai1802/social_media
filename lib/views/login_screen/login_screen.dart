@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/config/routes.dart';
 import 'package:social_media/providers/login/login_provider.dart';
@@ -121,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 26.h),
                   ButtonWithTextDefault(
-                    text: "Login",
+                    text: AppStrings.login,
                     bgColor: Colors.blue,
                     onTap: () {
                       //print('Data ${userNameController.text.trim()}');
@@ -142,7 +143,7 @@ class LoginScreen extends StatelessWidget {
                 SvgPicture.asset(AppIcons.facebookIcon),
                 SizedBox(width: 4.w),
                 Text(
-                  "Log in with Facebook",
+                  AppStrings.loginFacebook,
                   style: TextStyle(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w900,
@@ -162,7 +163,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don’t have an account?",
+                    AppStrings.notHaveAccount,
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
@@ -176,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                     onTap: () =>
                         Navigator.pushNamed(context, Routes.signUpRoute),
                     child: Text(
-                      "Sign up",
+                      AppStrings.signUp,
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,

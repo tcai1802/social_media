@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/constants/icons.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/config/routes.dart';
 import 'package:social_media/providers/providers.dart';
@@ -64,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
                         color: const Color(0xFF262626),
                       ),
                       decoration: InputDecoration(
-                        hintText: "username",
+                        hintText: AppStrings.userHint,
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 0, vertical: 0),
@@ -95,7 +96,7 @@ class SignUpScreen extends StatelessWidget {
                         color: Color(0xFF262626),
                       ),
                       decoration: InputDecoration(
-                        hintText: "password",
+                        hintText: AppStrings.passHint,
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 0, vertical: 0),
@@ -109,7 +110,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 26.h),
                   ButtonWithTextDefault(
-                    text: "Sign up",
+                    text: AppStrings.signUp,
                     onTap: () {
                       LoginProvider().handleSignUp(
                         context,
@@ -129,7 +130,7 @@ class SignUpScreen extends StatelessWidget {
                 SvgPicture.asset(AppIcons.facebookIcon),
                 SizedBox(width: 4.w),
                 Text(
-                  "Sign up with Facebook",
+                  AppStrings.signUpFacebook,
                   style: TextStyle(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w900,
@@ -149,7 +150,7 @@ class SignUpScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "You have an account?",
+                    AppStrings.haveAnAccount,
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
@@ -163,7 +164,7 @@ class SignUpScreen extends StatelessWidget {
                     onTap: () =>
                         Navigator.pushNamed(context, Routes.loginRoute),
                     child: Text(
-                      "Sign in",
+                      AppStrings.signIn,
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,

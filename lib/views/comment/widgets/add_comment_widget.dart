@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
 import 'package:social_media/models/comment/comment_model.dart';
 import 'package:social_media/providers/providers.dart';
@@ -34,7 +35,7 @@ class AddCommentWidget extends StatelessWidget {
                     color: const Color(0xFF262626),
                   ),
                   decoration: InputDecoration(
-                    hintText: "Add comment",
+                    hintText: AppStrings.addCommentHint,
                     isDense: true,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
@@ -48,7 +49,6 @@ class AddCommentWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  print("====");
                   provider.handleAddComment(
                       targetId: postId,
                       inputData: CommentModel(
