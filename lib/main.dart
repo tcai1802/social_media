@@ -24,6 +24,9 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   Hive.registerAdapter(UserHiveAdapter());
+  //var box = await Hive.openBox("test");
+  await Hive.openBox("myBox");
+  //box.clear();
   // Load file env
   await dotenv.load(fileName: ".env");
   cameraList = await availableCameras();
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Social Media App',
             theme: AppThemes.lightTheme,
-            initialRoute: Routes.loginRoute,
+            initialRoute: Routes.splashRoute,
             onGenerateRoute: AppRoutes.onGenerateRoute,
             home: child,
             builder: EasyLoading.init(),

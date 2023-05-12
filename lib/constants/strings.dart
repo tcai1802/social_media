@@ -20,4 +20,5 @@ class AppStrings {
   static const String userHint = "Enter your email";
   static const String from = "From";
   static const String forgotPassword = "Forgot password?";
+  static const String likes = "likes";
 }

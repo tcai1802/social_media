@@ -126,11 +126,11 @@ class LoginScreen extends StatelessWidget {
                     bgColor: AppColors.magnoliaColor,
                     onTap: () {
                       //print('Data ${userNameController.text.trim()}');
-                      LoginProvider().handleLogin(
-                        context,
-                        userName: userNameController.text.trim(),
-                        password: passwordController.text.trim(),
-                      );
+                      LoginProvider().handleLogin(context,
+                          //userName: userNameController.text.trim(),
+                          //password: passwordController.text.trim(),
+                          userName: "tcaiqb@gmail.com",
+                          password: 'admin123');
                     },
                   ),
                 ],
@@ -162,10 +162,9 @@ class LoginScreen extends StatelessWidget {
                   Text(
                     AppStrings.notHaveAccount,
                     style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.dustyGrayColor
-                    ),
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.dustyGrayColor),
                   ),
                   SizedBox(width: 4.w),
                   InkWell(

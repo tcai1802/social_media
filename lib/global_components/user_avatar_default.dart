@@ -65,7 +65,7 @@ class UserAvatarDefault extends StatelessWidget {
                 Positioned(
                     right: 0,
                     bottom: 0,
-                    child: Container(
+                    child: Container( 
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.r),
                         color: Colors.white,

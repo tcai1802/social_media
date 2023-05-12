@@ -17,7 +17,7 @@ class CommentProvider extends ChangeNotifier {
     //  print("===${item.data()}");
     //  commentList.add(CommentModel.fromJson(item.data()));
     //}
-    snapshot.asyncMap((event) => print("===="));
+    //snapshot.asyncMap((event) => print("===="));
     notifyListeners();
   }
 

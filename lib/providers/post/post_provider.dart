@@ -1,17 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media/api/api.dart';
 import 'package:social_media/models/models.dart';
 import 'package:social_media/models/post/post_model.dart';
+import 'package:social_media/models/user/user_hive.dart';
+import 'package:social_media/providers/login/login_provider.dart';
 
 class PostProvider extends ChangeNotifier {
   List<PostModel> postModelList = <PostModel>[];
   bool isLoading = false;
-  Future<void> handleLikeOrNotPost({required String postId}) async {
+  Future<void> handleLikeOrNotPost({required String targetId}) async {
+    var box = await Hive.openBox("myBox");
+    UserHive user = box.get("user");
     Response? res = await PostApi().favoritePostApi({
-      "user_id": "6448e36202d68b2317b675eb",
-      "target_id": "644aa389236ad19fb8a222b2"
-    }, postId);
+      "user_id": user.userId,
+      "target_id": targetId,
+    }, targetId);
     if (res != null && res.data["code"] == "successfully") {
       //print("Result: ${res?.data}");
     } else {
@@ -35,12 +41,15 @@ class PostProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> handleShowAllPost() async {
+  Future<void> handleShowAllPost(context) async {
+    final provider = Provider.of<LoginProvider>(context, listen: false);
+    print("=====${provider.currentUser?.userId}");
     isLoading = true;
     notifyListeners();
     Response? res = await PostApi().showAllPostApi();
+    print("==${res?.data}");
     if (res != null && res.data["code"] == "successfully") {
-      //postModelList.clear();
+      postModelList.clear();
       for (var data in res.data["data"]) {
         postModelList.add(PostModel.fromJson(data));
       }

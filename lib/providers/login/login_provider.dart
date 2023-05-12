@@ -25,18 +25,21 @@ class LoginProvider extends ChangeNotifier {
       if (response != null && response["code"] == "successfully") {
         EasyLoading.showSuccess("Success");
         currentUser = UserModel.fromJson(response["data"]);
-        var box = await Hive.openBox("test");
-        box.add(
+        var box = Hive.box("myBox");
+        box.put(
+          "me",
           UserHive(
               avatarUrl: currentUser?.avatarUrl,
               token: currentUser?.token,
               userId: currentUser?.userId,
               userName: currentUser?.userName),
         );
-        UserHive result = box.getAt(0);
-        print("=====${result.token!}");
-        Navigator.pushNamed(
-            context, Routes.mainRoute); // navigate to main screen
+        UserHive result = Hive.box("myBox").get("me") as UserHive;
+
+        print("Data ${currentUser?.userId}");
+        //Navigator.pushNamed(
+        //    context, Routes.mainRoute); // navigate to main screen
+        //print("Result ${box.length}");
       } else {
         EasyLoading.showError("Error");
       }

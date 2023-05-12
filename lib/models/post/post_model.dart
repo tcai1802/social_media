@@ -6,20 +6,17 @@ class PostModel {
   List<dynamic>? mediaList = [];
   String? user_id;
   String? caption;
-  //int? total_likes;
-  //int? total_comments;
   PostModel({
     this.post_id,
     this.mediaList,
     this.caption,
     this.user_id,
-    //this.total_likes,
-    //this.total_comments,
   });
   PostModel.fromJson(Map<String, dynamic> json) {
     post_id = json["post_id"];
     mediaList = json["media_list"];
     caption = json["caption"];
+    user_id = json["user_id"];
   }
 
   Map<String, dynamic> toJson() => {

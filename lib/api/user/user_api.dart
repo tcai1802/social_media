@@ -1,21 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/models/user/user_hive.dart';
 
-class CommentApi {
-  Future<Response?> addCommentApi(
-      Map<String, dynamic> inputData, String targetId) async {
+class UserApi {
+  Future<Response?> infoUserApi(String userId) async {
     Uri uriPath =
-        Uri.https(dotenv.env["URL_MAIN"]!, "${ApiPath.comments}/$targetId");
+        Uri.https(dotenv.env["URL_MAIN"]!, "${ApiPath.users}/$userId");
     final dio = Dio();
     var box = await Hive.openBox("myBox");
     UserHive user = box.getAt(0);
     try {
-      return await dio.postUri(
+      return await dio.getUri(
         uriPath,
-        data: inputData,
         options: Options(
           headers: {"Authorization": "JWT ${user.token}"},
         ),

@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:social_media/api/api.dart';
+import 'package:social_media/config/routes.dart';
 import 'package:social_media/models/post/post_model.dart';
+import 'package:social_media/models/user/user_hive.dart';
 import 'package:social_media/providers/login/login_provider.dart';
 
 enum AddPostScreenType {
@@ -177,17 +180,21 @@ class AddPostProvider extends ChangeNotifier {
       );
       inputMediaList.add(imageData);
     }
-    print("====${inputMediaList}");
+    //print("====${inputMediaList}");
     Map<String, dynamic> input =
         PostModel(caption: caption, mediaList: inputMediaList).toJson();
 
-    print("====${input}");
+    var box = await Hive.openBox("myBox");
+    UserHive user = box.getAt(0);
+    //print("====${user.token}");
+
     Response response = await PostApi().createPostApi(
       input,
-      {"Authorization": loginProvider.currentUser?.token},
+      {"Authorization": "JWT ${user.token}"},
     );
     if (response.data["code"] == "successfully") {
       EasyLoading.showSuccess('Successfully');
+      Navigator.popAndPushNamed(context, Routes.mainRoute);
     } else {
       EasyLoading.showError('Failed');
     }

@@ -1,16 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:social_media/arguments/arguments.dart';
 import 'package:social_media/config/routes.dart';
 import 'package:social_media/constants/index.dart';
 import 'package:social_media/global_components/index.dart';
-import 'package:social_media/models/favorite/favorite_model.dart';
-import 'package:social_media/models/post/post_model.dart';
+import 'package:social_media/models/models.dart';
 import 'package:social_media/providers/providers.dart';
 
 class HomePostItem extends StatefulWidget {
@@ -28,35 +29,40 @@ class HomePostItem extends StatefulWidget {
 class _HomePostItemState extends State<HomePostItem> {
   int _currentIndexImage = 0;
   bool isFavorite = false;
+  bool isLikedPost = false;
   List<FavoriteModel>? favoriteList = [];
+  UserModel? userData;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      Provider.of<PostProvider>(context, listen: false)
-          .handleShowFavoritePost(postId: widget.postModel.post_id ?? "")
+      Provider.of<UserProvider>(context, listen: false)
+          .handleGetUserInfo(widget.postModel.user_id!)
           .then((value) {
-        if (value != null) {
-          favoriteList = value;
-          if (!mounted) return;
+        userData = value;
+        //print("+===${userData?.userName}");
+        if (mounted) {
           setState(() {});
         }
       });
+      //Provider.of<PostProvider>(context, listen: false)
+      //    .handleShowFavoritePost(postId: widget.postModel.post_id ?? "")
+      //    .then((value) {
+      //  if (value != null) {
+      //    favoriteList = value;
+      //    if (!mounted) return;
+      //    setState(() {});
+      //  }
+      //});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    //final provider = Provider.of<PostProvider>(context, listen: false);
-    //provider
-    //    .handleShowFavoritePost(postId: widget.postModel.post_id ?? "")
-    //    .then((value) {
-    //  if (value != null) {
-    //    favoriteList = value;
-    //    setState(() {});
-    //  }
-    //});
-
+    Stream<QuerySnapshot> snapshots = FirebaseFirestore.instance
+        .collection("favorites")
+        .where('target_id', isEqualTo: widget.postModel.post_id)
+        .snapshots();
     return Consumer<PostProvider>(builder: (context, myType, child) {
       return Column(
         mainAxisSize: MainAxisSize.min,
@@ -65,22 +71,20 @@ class _HomePostItemState extends State<HomePostItem> {
             padding: EdgeInsets.all(10.h),
             child: Row(
               children: [
-                UserAvatarDefault(
-                  size: 32.h,
-                ),
+                UserAvatarDefault(size: 32.h),
                 SizedBox(width: 10.h),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "joshua_l",
+                      userData?.userName ?? "",
                       style: TextStyle(
                         fontSize: 13.sp,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
-                      "Tokyo, Japan",
+                      "",
                       style: TextStyle(
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w400,
@@ -111,11 +115,11 @@ class _HomePostItemState extends State<HomePostItem> {
                     builder: (BuildContext context) {
                       return GestureDetector(
                         onDoubleTap: () {
-                          if (isFavorite) return;
+                          if (isFavorite || isLikedPost) return;
                           //print("Double Tap");
-
+                          isLikedPost = true;
                           myType.handleLikeOrNotPost(
-                              postId: widget.postModel.post_id ?? "");
+                              targetId: widget.postModel.post_id ?? "");
 
                           setState(() {
                             isFavorite = true;
@@ -186,9 +190,18 @@ class _HomePostItemState extends State<HomePostItem> {
                   children: [
                     InkWell(
                         onTap: () {
-                          print("OK");
+                          isLikedPost = !isLikedPost;
+                          myType.handleLikeOrNotPost(
+                              targetId: widget.postModel.post_id ?? "");
+                          if (mounted) {
+                            setState(() {});
+                          }
                         },
-                        child: SvgPicture.asset(AppIcons.heartOffIcon)),
+                        child: Icon(
+                          isLikedPost ? Icons.favorite : Icons.favorite_outline,
+                          size: 32.sp,
+                          color: isLikedPost ? Colors.red : null,
+                        )),
                     SizedBox(width: 16.w),
                     GestureDetector(
                         onTap: () => Navigator.pushNamed(
@@ -237,13 +250,17 @@ class _HomePostItemState extends State<HomePostItem> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "${favoriteList?.length} likes",
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                StreamBuilder(
+                    stream: snapshots,
+                    builder: (context, snapshot) {
+                      return Text(
+                        "${snapshot.data?.docs.length ?? 0} ${AppStrings.likes}",
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      );
+                    }),
                 ReadMoreText(
                   widget.postModel.caption!,
                   trimLines: 1,
@@ -251,7 +268,7 @@ class _HomePostItemState extends State<HomePostItem> {
                   trimCollapsedText: AppStrings.showMore,
                   trimExpandedText: AppStrings.showLess,
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

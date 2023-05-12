@@ -24,7 +24,7 @@ class _HomePostsWidgetState extends State<HomePostsWidget> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Provider.of<PostProvider>(context, listen: false)
-          .handleShowAllPost();
+          .handleShowAllPost(context);
     });
   }
 

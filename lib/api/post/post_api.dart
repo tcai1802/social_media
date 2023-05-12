@@ -35,8 +35,10 @@ class PostApi {
   Future<Response?> showAllPostApi() async {
     Uri allPostUri = Uri.https(dotenv.env["URL_MAIN"]!, ApiPath.allPosts);
     final dio = Dio();
-    var box = await Hive.openBox("test");
-    UserHive user = box.getAt(0);
+    //var box = await Hive.openBox("myBox");
+    UserHive user = Hive.box("myBox").get("me");
+    //print("user ${user.token}");
+
     try {
       return await dio.getUri(
         allPostUri,
@@ -54,9 +56,9 @@ class PostApi {
       Map<String, dynamic> inputData, String postId) async {
     Uri favoritePostUri =
         Uri.https(dotenv.env["URL_MAIN"]!, "${ApiPath.favorites}/$postId");
-    print("=== ${favoritePostUri}");
+    //print("=== ${favoritePostUri}");
     final dio = Dio();
-    var box = await Hive.openBox("test");
+    var box = await Hive.openBox("myBox");
     UserHive user = box.getAt(0);
     try {
       return await dio.postUri(
@@ -76,7 +78,7 @@ class PostApi {
         Uri.https(dotenv.env["URL_MAIN"]!, "${ApiPath.favorites}/$postId");
     //print("=== ${favoritePostUri}");
     final dio = Dio();
-    var box = await Hive.openBox("test");
+    var box = await Hive.openBox("myBox");
     UserHive user = box.getAt(0);
     try {
       return await dio.getUri(

@@ -7,3 +7,4 @@ export 'camera/camera_provider.dart';
 export 'login/login_provider.dart';
 export 'post/post_provider.dart';
 export 'comment/comment_provider.dart';
+export 'user/user_provider.dart';
