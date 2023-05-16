@@ -30,7 +30,7 @@ class _HomePostItemState extends State<HomePostItem> {
   int _currentIndexImage = 0;
   bool isFavorite = false;
   bool isLikedPost = false;
-  List<FavoriteModel>? favoriteList = [];
+  List<FavoriteModel> favoriteList = [];
   UserModel? userData;
   @override
   void initState() {
@@ -40,20 +40,10 @@ class _HomePostItemState extends State<HomePostItem> {
           .handleGetUserInfo(widget.postModel.user_id!)
           .then((value) {
         userData = value;
-        //print("+===${userData?.userName}");
         if (mounted) {
           setState(() {});
         }
       });
-      //Provider.of<PostProvider>(context, listen: false)
-      //    .handleShowFavoritePost(postId: widget.postModel.post_id ?? "")
-      //    .then((value) {
-      //  if (value != null) {
-      //    favoriteList = value;
-      //    if (!mounted) return;
-      //    setState(() {});
-      //  }
-      //});
     });
   }
 
@@ -63,6 +53,7 @@ class _HomePostItemState extends State<HomePostItem> {
         .collection("favorites")
         .where('target_id', isEqualTo: widget.postModel.post_id)
         .snapshots();
+
     return Consumer<PostProvider>(builder: (context, myType, child) {
       return Column(
         mainAxisSize: MainAxisSize.min,
@@ -115,20 +106,22 @@ class _HomePostItemState extends State<HomePostItem> {
                     builder: (BuildContext context) {
                       return GestureDetector(
                         onDoubleTap: () {
-                          if (isFavorite || isLikedPost) return;
-                          //print("Double Tap");
-                          isLikedPost = true;
-                          myType.handleLikeOrNotPost(
-                              targetId: widget.postModel.post_id ?? "");
-
+                          if (isFavorite) return;
+                          if (!isLikedPost) {
+                            myType.handleLikeOrNotPost(context,
+                                targetId: widget.postModel.post_id ?? "");
+                          }
                           setState(() {
+                            isLikedPost = !isLikedPost;
                             isFavorite = true;
                             Future.delayed(
                               const Duration(seconds: 1),
                               () {
-                                setState(() {
-                                  isFavorite = false;
-                                });
+                                if (mounted) {
+                                  setState(() {
+                                    isFavorite = false;
+                                  });
+                                }
                               },
                             );
                           });
@@ -191,17 +184,22 @@ class _HomePostItemState extends State<HomePostItem> {
                     InkWell(
                         onTap: () {
                           isLikedPost = !isLikedPost;
-                          myType.handleLikeOrNotPost(
+                          myType.handleLikeOrNotPost(context,
                               targetId: widget.postModel.post_id ?? "");
                           if (mounted) {
                             setState(() {});
                           }
                         },
-                        child: Icon(
-                          isLikedPost ? Icons.favorite : Icons.favorite_outline,
-                          size: 32.sp,
-                          color: isLikedPost ? Colors.red : null,
-                        )),
+                        child: isLikedPost
+                            ? Icon(
+                                Icons.favorite,
+                                size: 32.sp,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                Icons.favorite_border_outlined,
+                                size: 32.sp,
+                              )),
                     SizedBox(width: 16.w),
                     GestureDetector(
                         onTap: () => Navigator.pushNamed(
@@ -253,6 +251,17 @@ class _HomePostItemState extends State<HomePostItem> {
                 StreamBuilder(
                     stream: snapshots,
                     builder: (context, snapshot) {
+                      favoriteList.clear();
+                      snapshot.data?.docs.forEach(
+                        (element) {
+                          favoriteList!.add(FavoriteModel.fromJson(
+                              element.data() as Map<String, dynamic>));
+                        },
+                      );
+                      isLikedPost = favoriteList.any((element) =>
+                          element.user_id ==
+                          context.watch<LoginProvider>().currentUser?.userId);
+
                       return Text(
                         "${snapshot.data?.docs.length ?? 0} ${AppStrings.likes}",
                         style: TextStyle(

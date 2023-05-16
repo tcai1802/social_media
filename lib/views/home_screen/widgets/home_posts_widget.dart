@@ -20,7 +20,6 @@ class HomePostsWidget extends StatefulWidget {
 class _HomePostsWidgetState extends State<HomePostsWidget> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Provider.of<PostProvider>(context, listen: false)
@@ -31,7 +30,6 @@ class _HomePostsWidgetState extends State<HomePostsWidget> {
   @override
   Widget build(BuildContext context) {
     return Consumer<PostProvider>(builder: (context, value, child) {
-      //print("=== ${value.postModelList}");
       return !value.isLoading
           ? ListView.builder(
               itemCount: value.postModelList.length,

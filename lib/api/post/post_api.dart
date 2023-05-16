@@ -8,14 +8,6 @@ import 'package:social_media/models/user/user_hive.dart';
 class PostApi {
   Future<Response> createPostApi(
       Map<String, dynamic> data, Map<String, dynamic> headerData) async {
-    //List<MultipartFile> fileList = [];
-    //for (File data in imageList) {
-    //  MultipartFile imageData = MultipartFile.fromFileSync(
-    //    data.path,
-    //  );
-    //  fileList.add(imageData);
-    //}
-    //print("===== $data");
     final formData = FormData.fromMap(data);
     final dio = Dio();
     var addPostUri = Uri.https(dotenv.env["URL_MAIN"]!, ApiPath.addPost);
@@ -32,18 +24,18 @@ class PostApi {
   Future<Map<String, dynamic>?> deletePostApi() async {}
 
   // show app post
-  Future<Response?> showAllPostApi() async {
+  Future<Response?> showAllPostApi({Map<String, dynamic>? inputHeader}) async {
     Uri allPostUri = Uri.https(dotenv.env["URL_MAIN"]!, ApiPath.allPosts);
     final dio = Dio();
     //var box = await Hive.openBox("myBox");
-    UserHive user = Hive.box("myBox").get("me");
+    //UserHive user = Hive.box("myBox").get("me");
     //print("user ${user.token}");
 
     try {
       return await dio.getUri(
         allPostUri,
         options: Options(
-          headers: {"Authorization": "JWT ${user.token}"},
+          headers: inputHeader,
         ),
       );
     } catch (e) {

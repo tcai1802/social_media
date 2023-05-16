@@ -19,7 +19,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
+          children: const [
             ProfileHeaderWidget(),
             ProfileInfoWidget(),
             Expanded(child: ProfileTabBarWidget())

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:social_media/views/home_screen/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {

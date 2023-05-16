@@ -23,6 +23,8 @@ class AppRoutes {
           builder: (_) =>
               CommentScreen(data: settings.arguments as CommentArgument),
         );
+      case (Routes.editProfile):
+        return MaterialPageRoute(builder: (_) => const EditProfileScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

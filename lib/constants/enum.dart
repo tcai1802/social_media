@@ -24,3 +24,8 @@ enum UploadTypeEnum {
   camera,
   library,
 }
+
+enum SearchType {
+  none,
+  user,
+}

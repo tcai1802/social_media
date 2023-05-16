@@ -21,4 +21,9 @@ class AppStrings {
   static const String from = "From";
   static const String forgotPassword = "Forgot password?";
   static const String likes = "likes";
+  static const String posts = "Posts";
+  static const String followers = "Followers";
+  static const String following = "Following";
+  static const String fullName = "FullName";
+
 }

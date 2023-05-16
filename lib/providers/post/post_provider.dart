@@ -11,11 +11,16 @@ import 'package:social_media/providers/login/login_provider.dart';
 class PostProvider extends ChangeNotifier {
   List<PostModel> postModelList = <PostModel>[];
   bool isLoading = false;
-  Future<void> handleLikeOrNotPost({required String targetId}) async {
+
+  Future<void> intData(context) async {}
+
+  Future<void> handleLikeOrNotPost(context, {required String targetId}) async {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
     var box = await Hive.openBox("myBox");
-    UserHive user = box.get("user");
+    //UserHive user = box.get("me");
+    print("User ===${loginProvider.currentUser?.userId}");
     Response? res = await PostApi().favoritePostApi({
-      "user_id": user.userId,
+      "user_id": loginProvider.currentUser?.userId,
       "target_id": targetId,
     }, targetId);
     if (res != null && res.data["code"] == "successfully") {
@@ -34,7 +39,7 @@ class PostProvider extends ChangeNotifier {
       for (var item in res.data["data"]) {
         favoriteList.add(FavoriteModel.fromJson(item));
       }
-      print("===${favoriteList}");
+      //print("===${favoriteList}");
       return favoriteList;
     } else {
       return [];
@@ -43,11 +48,12 @@ class PostProvider extends ChangeNotifier {
 
   Future<void> handleShowAllPost(context) async {
     final provider = Provider.of<LoginProvider>(context, listen: false);
-    print("=====${provider.currentUser?.userId}");
+    //print("=====${provider.currentUser?.userId}");
     isLoading = true;
     notifyListeners();
-    Response? res = await PostApi().showAllPostApi();
-    print("==${res?.data}");
+    Response? res = await PostApi().showAllPostApi(
+        inputHeader: {"Authorization": "JWT ${provider.currentUser?.token}"});
+    //print("==${res?.data}");
     if (res != null && res.data["code"] == "successfully") {
       postModelList.clear();
       for (var data in res.data["data"]) {
