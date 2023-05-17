@@ -32,8 +32,5 @@ class UserModel {
     updatedAt = json["updated_at"];
   }
 
-  Map<String, dynamic> toJson() => {
-        "user_name": userName,
-        "password": password,
-      };
+  Map<String, dynamic> toJson() => {"full_name": fullName};
 }

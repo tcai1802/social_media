@@ -22,15 +22,15 @@ class UserApi {
       return null;
     }
   }
-  Future<Response?> editUserApi(String userId, Options inputOptions) async {
+
+  Future<Response?> editUserApi(String userId, Map<String, dynamic> inputData,
+      Options inputOptions) async {
     Uri uriPath =
         Uri.https(dotenv.env["URL_MAIN"]!, "${ApiPath.users}/$userId");
     final dio = Dio();
     try {
-      return await dio.patchUri(
-        uriPath,
-        options: inputOptions
-      );
+      return await dio.patchUri(uriPath,
+          data: inputData, options: inputOptions);
     } catch (e) {
       return null;
     }

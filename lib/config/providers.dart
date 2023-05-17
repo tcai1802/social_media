@@ -14,4 +14,5 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => PostProvider()),
   ChangeNotifierProvider(create: (_) => CommentProvider()),
   ChangeNotifierProvider(create: (_) => UserProvider()),
+  ChangeNotifierProvider(create: (_) => EditProfileProvider()),
 ];

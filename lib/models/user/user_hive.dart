@@ -14,11 +14,14 @@ class UserHive extends HiveObject {
 
   @HiveField(3)
   String? token;
+    @HiveField(4)
+  String? fullName;
   UserHive({
     this.userId,
     this.userName,
     this.avatarUrl,
     this.token,
+    this.fullName,
   });
 }
 
@@ -33,6 +36,7 @@ class UserHiveAdapter extends TypeAdapter<UserHive> {
       userName: reader.read(),
       avatarUrl: reader.read(),
       token: reader.read(),
+      fullName: reader.read(),
     );
   }
 
@@ -42,5 +46,6 @@ class UserHiveAdapter extends TypeAdapter<UserHive> {
     writer.write(obj.userName);
     writer.write(obj.avatarUrl);
     writer.write(obj.token);
+    writer.write(obj.fullName);
   }
 }
